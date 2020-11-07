@@ -1,0 +1,24 @@
+= form_with model: @product, local: true do |form|
+  - if @product.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@product.errors.count, "error")
+        | prohibited
+        | this product from being saved:
+      ul
+        - @product.errors.full_messages.each do |msg|
+          li= msg
+  p
+    = form.label :code
+    br/
+    = form.text_field :code
+  p
+    = form.label :name
+    br/
+    = form.text_field :name
+  p
+    = form.label :price
+    br/
+    = form.number_field :price, step: 0.05
+  p
+    = form.submit

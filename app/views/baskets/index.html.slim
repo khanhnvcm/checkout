@@ -1,0 +1,27 @@
+h1 Your Basket
+table
+    thead
+      tr
+        th Name
+        th Quantity
+        th Price
+        th Amount
+        th
+    tbody
+      - Basket.all.each do |basket|
+        - if basket.quantity > 0
+        	tr
+        		td = Product.find(basket.product_id).name
+        		td = basket.quantity
+        		td = Product.find(basket.product_id).price
+        		td = Product.find(basket.product_id).price*basket.quantity
+        		td = link_to 'Edit quantity', edit_basket_path(Product.find(basket.product_id),basket)
+      tr
+      	td colspan="3" style="text-align:right" 
+      		Strong Total:
+      	td 
+      		Strong = @total
+
+= link_to 'Clear Basket', remove_baskets_path
+br          
+= link_to 'Back', products_path

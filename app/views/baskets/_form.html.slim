@@ -1,0 +1,16 @@
+= form_with model: @basket, local: true do |form|
+  - if @basket.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@basket.errors.count, "error")
+        | prohibited
+        | this basket from being saved:
+      ul
+        - @basket.errors.full_messages.each do |msg|
+          li= msg
+  p
+    = form.label :quantity
+    br/
+    = form.number_field :quantity
+  p
+    = form.submit

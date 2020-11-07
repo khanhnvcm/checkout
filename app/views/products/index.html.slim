@@ -1,0 +1,25 @@
+h1 Products
+= link_to 'New Product', new_product_path, class: 'link_to'
+'--  
+= link_to 'Basket', index_baskets_path, class: 'link_to'
+table
+    thead style='background-color: #ccffcc'
+      tr 
+        th Code
+        th Name
+        th Price
+        th colspan="3" Actions
+    tbody
+      - @products.each do |product|
+      	tr
+      		td = product.code
+      		td = product.name
+      		td = product.price
+      		td 
+              = link_to 'Edit', edit_product_path(product), class: 'link_to'
+              '--
+              = link_to 'Destroy', product_path(product), method: :delete, data: {confirm:'Are you sure?'}, class: 'link_to'
+              '--
+              = link_to 'Add to Basket', edit_basket_path(product, Basket.find_by(product_id: product.id)), class: 'link_to'
+
+= link_to 'Home', root_path, class: 'link_to'      		
