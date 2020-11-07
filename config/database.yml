@@ -1,10 +1,10 @@
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8mb4
   charset: utf8mb4
   strict: true
   pool: <%= ENV["PUMA_MAX_THREADS"] || 5 %>
-  url: mysql2://root:@127.0.0.1:3306/checkout
+  url: postgresql://root:@127.0.0.1:3306/checkout
 
 development:
   <<: *default
@@ -12,4 +12,4 @@ development:
 
 test:
   <<: *default
-  url: mysql2://root:@127.0.0.1:3306/checkout_test
+  url: postgresql://root:@127.0.0.1:3306/checkout_test
